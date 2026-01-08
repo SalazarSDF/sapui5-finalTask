@@ -1,0 +1,20 @@
+<core:FragmentDefinition
+    xmlns:core="sap.ui.core"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m">
+    <ViewSettingsDialog
+        confirm=".onConfirmViewSettingsDialog">
+        <filterItems>
+            <ViewSettingsItem text="Available" key="Available" />
+            <ViewSettingsItem text="Discontinued" key="Discontinued" />
+        </filterItems>
+        <groupItems>
+            <ViewSettingsItem text="Price" key="Price" />
+            <ViewSettingsItem text="Release Date" key="ReleaseDate" />
+        </groupItems>
+        <sortItems>
+            <ViewSettingsItem text="Price (Desc)" key="Price" selected="true" />
+            <ViewSettingsItem text="Name" key="Name" />
+        </sortItems>
+    </ViewSettingsDialog>
+</core:FragmentDefinition>

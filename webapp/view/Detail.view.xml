@@ -1,0 +1,150 @@
+<mvc:View
+    controllerName="sapui5finaltask.controller.Detail"
+    xmlns="sap.m"
+    xmlns:semantic="sap.f.semantic"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:core="sap.ui.core"
+    xmlns:l="sap.ui.layout"
+    xmlns:f="sap.ui.layout.form">
+    
+    <semantic:SemanticPage
+        id="page"
+        busy="{detailView>/busy}"
+        busyIndicatorDelay="{detailView>/delay}"
+        core:require="{
+            formatMessage: 'sap/base/strings/formatMessage',
+            DateType: 'sap/ui/model/type/Date'
+        }">
+        
+        <semantic:titleHeading>
+            <Title text="{Name}" />
+        </semantic:titleHeading>
+
+        <semantic:headerContent>
+            <l:HorizontalLayout>
+                <l:VerticalLayout class="sapUiMediumMarginEnd">
+                    <ObjectAttribute title="ID" text="{ID}" />
+                    <ObjectAttribute 
+                        title="Supplier" 
+                        text="{Supplier/Name}" />
+                    <ObjectAttribute 
+                        title="Released" 
+                        text="{
+                            path: 'ReleaseDate',
+                            type: 'DateType',
+                            formatOptions: { style: 'medium' }
+                        }" />
+                </l:VerticalLayout>
+                <l:VerticalLayout>
+                    <Label text="Price" />
+                    <ObjectNumber
+                        number="{
+                            path: 'Price',
+                            type: 'sap.ui.model.type.Float',
+                            formatOptions: {
+                                minFractionDigits: 2,
+                                maxFractionDigits: 2
+                            }
+                        }"
+                        unit="USD" />
+                </l:VerticalLayout>
+            </l:HorizontalLayout>
+        </semantic:headerContent>
+
+        <semantic:content>
+            <VBox class="sapUiSmallMargin">
+                <f:SimpleForm 
+                    id="productForm"
+                    editable="{detailView>/editMode}"
+                    layout="ResponsiveGridLayout"
+                    title="Product Details">
+                    
+                    <Label text="ID" />
+                    <Text text="{ID}" />
+                    
+                    <Label text="Name" />
+                    <Input value="{Name}" 
+                           placeholder="Enter Product Name"
+                           enabled="{detailView>/editMode}" 
+                           liveChange=".onInputChange" />
+
+                    <Label text="Description" />
+                    <TextArea value="{Description}" 
+                              growing="true"
+                              rows="4"
+                              enabled="{detailView>/editMode}" />
+
+                    <Label text="Price" />
+                    <Input value="{Price}" 
+                           type="Number"
+                           placeholder="0.00"
+                           enabled="{detailView>/editMode}" />
+
+                    <Label text="Rating" />
+                    <RatingIndicator value="{Rating}" 
+                                    editable="{detailView>/editMode}" />
+                                    
+                    <Label text="Release Date" />
+                    <DatePicker value="{path:'ReleaseDate', type:'sap.ui.model.type.Date'}"
+                                placeholder="Select Date"
+                                enabled="{detailView>/editMode}" />
+                                
+                    <Label text="Discontinued Date" />
+                    <DatePicker value="{path:'DiscontinuedDate', type:'sap.ui.model.type.Date'}"
+                                placeholder="Select Date"
+                                enabled="{detailView>/editMode}" />
+                    <Toolbar>
+                        <ToolbarSpacer />
+                        <Button 
+                             text="Cancel" 
+                             press=".onCancel" 
+                             visible="{= ${detailView>/editMode}}" />
+                         <Button 
+                             text="Save" 
+                             type="Emphasized" 
+                             press=".onSave" 
+                             visible="{= ${detailView>/editMode}}" />
+				            </Toolbar>
+                </f:SimpleForm>
+            </VBox>
+        </semantic:content>
+
+        <semantic:sendEmailAction>
+            <semantic:SendEmailAction
+                id="shareEmail"
+                press=".onSendEmailPress"/>
+        </semantic:sendEmailAction>
+
+        <semantic:closeAction>
+            <semantic:CloseAction
+                id="closeColumn"
+                press=".onCloseDetailPress"/>
+        </semantic:closeAction>
+
+        <semantic:fullScreenAction>
+            <semantic:FullScreenAction
+                id="enterFullScreen"
+                visible="{= !${device>/system/phone} &amp;&amp; !${appView>/actionButtonsInfo/midColumn/fullScreen}}"
+                press="toggleFullScreen"/>
+        </semantic:fullScreenAction>
+        <semantic:exitFullScreenAction>
+            <semantic:ExitFullScreenAction
+                id="exitFullScreen"
+                visible="{= !${device>/system/phone} &amp;&amp; ${appView>/actionButtonsInfo/midColumn/fullScreen}}"
+                press="toggleFullScreen"/>
+        </semantic:exitFullScreenAction>
+
+
+        <semantic:editAction >
+            <semantic:EditAction
+                press=".onEdit" 
+                visible="{= !${detailView>/editMode}}" />
+        </semantic:editAction>
+
+        <semantic:deleteAction >
+            <semantic:DeleteAction 
+                press=".onDelete" 
+                visible="{= !${detailView>/editMode}}" />
+        </semantic:deleteAction>
+    </semantic:SemanticPage>
+</mvc:View>

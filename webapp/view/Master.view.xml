@@ -1,0 +1,124 @@
+<mvc:View
+    controllerName="sapui5finaltask.controller.Master"
+    xmlns="sap.m"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:core="sap.ui.core"
+    xmlns:semantic="sap.f.semantic">
+    <semantic:SemanticPage id="page"
+        core:require="{
+            formatMessage: 'sap/base/strings/formatMessage',
+            DateType: 'sap/ui/model/type/Date'
+        }">
+        <semantic:titleHeading>
+            <Title
+                id="masterHeaderTitle"
+                text="{
+                    parts: [
+                        'i18n>masterTitleCount',
+                        'masterView>/titleCount'
+                    ],
+                    formatter: 'formatMessage'
+            }"/>
+        </semantic:titleHeading>
+        <semantic:content>
+            <List
+                id="list"
+                width="auto"
+                class="sapFDynamicPageAlignContent"
+                items="{
+                    path: '/Products',
+                    sorter: {
+                        path: 'ID',
+                        descending: true
+                    },
+                    groupHeaderFactory: '.createGroupHeader'
+                }"
+                busyIndicatorDelay="{masterView>/delay}"
+                mode="{= ${device>/system/phone} ? 'None' : 'SingleSelectMaster'}"
+                growing="true"
+                growingScrollToLoad="true"
+                updateFinished=".onUpdateFinished"
+                selectionChange=".onSelectionChange">
+                <noData>
+                    <IllustratedMessage
+                        title="{masterView>/noDataText}"
+                        illustrationType="sapIllus-NoFilterResults"
+                        enableDefaultTitleAndDescription="false"/>
+                </noData>
+                <headerToolbar>
+                    <OverflowToolbar>
+                        <Button 
+                            id="createButton"
+                            icon="sap-icon://add"
+                            text="Create"
+                            type="Emphasized"
+                            press=".onCreate" />
+                        
+                        <ToolbarSpacer/>
+                        <SearchField
+                            id="searchField"
+                            showRefreshButton="true"
+                            tooltip="{i18n>masterSearchTooltip}"
+                            width="100%"
+                            search=".onSearch">
+                            <layoutData>
+                                <OverflowToolbarLayoutData
+                                    minWidth="150px"
+                                    maxWidth="240px"
+                                    shrinkable="true"
+                                    priority="NeverOverflow"/>
+                            </layoutData>
+                        </SearchField>
+                        <ToolbarSpacer/>
+                        <Button
+                            id="filterButton"
+                            press=".onOpenViewSettings"
+                            icon="sap-icon://filter"
+                            type="Transparent"/>
+                        <Button
+                            id="groupButton"
+                            press=".onOpenViewSettings"
+                            icon="sap-icon://group-2"
+                            type="Transparent"/>
+                    </OverflowToolbar>
+                </headerToolbar>
+                <items>
+                    <ObjectListItem
+                        type="{= ${device>/system/phone} ? 'Active' : 'Inactive'}"
+                        press=".onSelectionChange"
+                        title="{Name}"
+                        number="{
+                            path: 'Price',
+                            type: 'sap.ui.model.type.Float',
+                            formatOptions: { 
+                                minFractionDigits: 2, 
+                                maxFractionDigits: 2 
+                            }
+                        }"
+                        numberUnit="USD">
+                        <firstStatus>
+                            <ObjectStatus
+                                state="{
+                                    path: 'DiscontinuedDate',
+                                    formatter: '.formatter.discontinuedState'
+                                }"
+                                text="{
+                                    path: 'DiscontinuedDate',
+                                    formatter: '.formatter.discontinuedText'
+                                }"/>
+                        </firstStatus>
+                        <attributes>
+                            <ObjectAttribute title="Description" text="{Description}" />
+                            <ObjectAttribute title="Released" 
+                                text="{= ${ReleaseDate}
+                                    ? ${ path: 'ReleaseDate',
+                                         type: 'DateType',
+                                         formatOptions: { style: 'medium' } }
+                                    : 'N/A' }" />
+                        </attributes>
+                    </ObjectListItem>
+                </items>
+            </List>
+        </semantic:content>
+    </semantic:SemanticPage>
+</mvc:View>

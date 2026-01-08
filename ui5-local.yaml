@@ -12,6 +12,8 @@ framework:
     - name: sap.ui.core
     - name: sap.ushell
     - name: themelib_sap_horizon
+    - name: sap.f
+    - name: sap.ui.layout
 server:
   customMiddleware:
     - name: fiori-tools-appreload
@@ -29,3 +31,15 @@ server:
       afterMiddleware: compression
       configuration:
         ignoreCertErrors: false # If set to true, certificate errors will be ignored. E.g. self-signed certificates will be accepted
+
+
+    - name: sap-fe-mockserver
+      beforeMiddleware: csp
+      configuration:
+        mountPath: /
+        services:
+          # This matches the URI in your manifest.json
+          - urlPath: /mockServerV2
+            metadataXmlPath: ./webapp/localService/metadataV2.xml
+            mockdataRootPath: ./webapp/localService/mockdata_V2
+            generateMockData: false

@@ -1,0 +1,67 @@
+[
+  {
+    "ID": 1,
+    "Name": "Imperial Books Ltd.",
+    "Street": "Cadia Road 1",
+    "City": "Cadia",
+    "State": "Segmentum Obscurus",
+    "ZipCode": "10001",
+    "Country": "Imperium",
+    "Concurrency": 1,
+    "Products": [
+      {"__metadata": {"uri": "Products(1)"}}
+    ]
+  },
+  {
+    "ID": 2,
+    "Name": "Mars Pattern Forgeworks",
+    "Street": "Mechanicus Avenue 15",
+    "City": "Olympus Mons",
+    "State": "Segmentum Solar",
+    "ZipCode": "20002",
+    "Country": "Adeptus Mechanicus",
+    "Concurrency": 1,
+    "Products": [
+      {"__metadata": {"uri": "Products(2)"}}
+    ]
+  },
+  {
+    "ID": 3,
+    "Name": "Ultramar Trading Consortium",
+    "Street": "Macragge Boulevard 42",
+    "City": "Talassar",
+    "State": "Segmentum Ultima",
+    "ZipCode": "30003",
+    "Country": "Imperium",
+    "Concurrency": 1,
+    "Products": [
+      {"__metadata": {"uri": "Products(3)"}}
+    ]
+  },
+  {
+    "ID": 4,
+    "Name": "Fenrisian Acoustics",
+    "Street": "Wolf's Head Road 7",
+    "City": "The Fang",
+    "State": "Segmentum Solar",
+    "ZipCode": "40004",
+    "Country": "Imperium",
+    "Concurrency": 1,
+    "Products": [
+      {"__metadata": {"uri": "Products(4)"}}
+    ]
+  },
+  {
+    "ID": 5,
+    "Name": "Armageddon Steelworks",
+    "Street": "Hive Primus Level 12",
+    "City": "Armageddon Secundus",
+    "State": "Segmentum Solar",
+    "ZipCode": "50005",
+    "Country": "Imperium",
+    "Concurrency": 1,
+    "Products": [
+      {"__metadata": {"uri": "Products(5)"}}
+    ]
+  }
+]
