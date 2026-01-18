@@ -1,14 +1,14 @@
 ## Application Details
 |               |
 | ------------- |
-|**Generation Date and Time**<br>Fri Dec 26 2025 06:20:00 GMT-0500 (Eastern Standard Time)|
+|**Generation Date and Time**<br>Tue Jan 13 2026 06:42:26 GMT-0500 (Eastern Standard Time)|
 |**App Generator**<br>SAP Fiori Application Generator|
 |**App Generator Version**<br>1.20.0|
 |**Generation Platform**<br>CLI|
 |**Template Used**<br>Basic|
 |**Service Type**<br>None|
 |**Service URL**<br>N/A|
-|**Module Name**<br>sapui5-finaltask|
+|**Module Name**<br>sapui5finaltask|
 |**Application Title**<br>App Title|
 |**Namespace**<br>|
 |**UI5 Theme**<br>sap_horizon|
@@ -17,7 +17,7 @@
 |**Enable TypeScript**<br>False|
 |**Add Eslint configuration**<br>False|
 
-## sapui5-finaltask
+## sapui5finaltask
 
 An SAP Fiori application.
 
