@@ -1,14 +1,14 @@
 sap.ui.define(
   [
-    "sap/ui/core/mvc/Controller",
+    "sapui5finaltask/controller/BaseController",
     "sap/ui/model/json/JSONModel",
     "sap/m/MessageToast",
   ],
-  (Controller, JSONModel, MessageToast) => {
+  (BaseController, JSONModel, MessageToast) => {
     "use strict";
-    return Controller.extend("sapui5finaltask.controller.Object", {
+    return BaseController.extend("sapui5finaltask.controller.Object", {
       onInit() {
-        this._oRouter = this.getOwnerComponent().getRouter();
+        this._oRouter = this.getRouter();
         this._oRouter
           .getRoute("RouteObject")
           .attachPatternMatched(this._onObjectMatched, this);
@@ -16,18 +16,14 @@ sap.ui.define(
           .getRoute("RouteCreate")
           .attachPatternMatched(this._onCreateMatched, this);
 
-        this.getView().setModel(new JSONModel({ editMode: false }), "view");
+        this.setModel(new JSONModel({ editMode: false }), "view");
         this._oModel = this.getOwnerComponent().getModel();
-
-      this._oResourceBundle = this.getOwnerComponent()
-        .getModel("i18n")
-        .getResourceBundle();
       },
 
       _onObjectMatched: function (oEvent) {
         const sProductId = oEvent.getParameter("arguments").productId;
         this.getView().bindElement(`/Products(${sProductId})`);
-        this.getView().getModel("view").setProperty("/editMode", false);
+        this.getModel("view").setProperty("/editMode", false);
       },
 
       _onCreateMatched: function () {
@@ -43,12 +39,12 @@ sap.ui.define(
           },
         });
         this.getView().setBindingContext(this._oNewContext);
-        this.getView().getModel("view").setProperty("/editMode", true);
+        this.getModel("view").setProperty("/editMode", true);
         this._bIsCreate = true;
       },
 
       onEdit: function () {
-        this.getView().getModel("view").setProperty("/editMode", true);
+        this.getModel("view").setProperty("/editMode", true);
       },
 
       simpleValidation: function () {
@@ -59,7 +55,7 @@ sap.ui.define(
 
         if (!oNameInput.getValue().trim()) {
           oNameInput.setValueState("Error");
-          oNameInput.setValueStateText(this._oResourceBundle.getText("nameRequired"));
+          oNameInput.setValueStateText(this.getI18nText("nameRequired"));
           bValid = false;
         } else {
           oNameInput.setValueState("None");
@@ -67,7 +63,7 @@ sap.ui.define(
 
         if (!oDescriptionInput.getValue().trim()) {
           oDescriptionInput.setValueState("Error");
-          oDescriptionInput.setValueStateText(this._oResourceBundle.getText("descriptionRequired"));
+          oDescriptionInput.setValueStateText(this.getI18nText("descriptionRequired"));
           bValid = false;
         } else {
           oDescriptionInput.setValueState("None");
@@ -84,7 +80,7 @@ sap.ui.define(
         this._oModel.submitChanges({
           success: () => {
             MessageToast.show("Saved successfully");
-            this.getView().getModel("view").setProperty("/editMode", false);
+            this.getModel("view").setProperty("/editMode", false);
             if (this._bIsCreate) {
               this._bIsCreate = false;
             }
@@ -101,7 +97,7 @@ sap.ui.define(
         } else {
           this._oModel.resetChanges();
         }
-        this.getView().getModel("view").setProperty("/editMode", false);
+        this.getModel("view").setProperty("/editMode", false);
         this._oRouter.navTo("RouteMaster");
       },
 

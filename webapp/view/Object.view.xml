@@ -10,6 +10,7 @@
     <uxap:ObjectPageLayout id="objectPage">
         <uxap:headerTitle>
             <uxap:ObjectPageHeader
+                id="_IDGenObjectPageHeader1"
                 objectTitle="{Name}"
                 objectSubtitle="{Description}"
             >
@@ -46,16 +47,23 @@
             </uxap:ObjectPageHeader>
         </uxap:headerTitle>
         <uxap:sections>
-            <uxap:ObjectPageSection title="Details">
+            <uxap:ObjectPageSection
+                id="_IDGenObjectPageSection"
+                title="Details"
+            >
                 <uxap:subSections>
-                    <uxap:ObjectPageSubSection>
+                    <uxap:ObjectPageSubSection id="_IDGenObjectPageSubSection">
                         <uxap:blocks>
                             <layout:Grid
+                                id="_IDGenGrid"
                                 defaultSpan="XL4 L4 M6 S12"
                                 class="sapUiSmallMargin"
                             >
-                                <VBox>
-                                    <Label text="Name" />
+                                <VBox id="_IDGenVBox">
+                                    <Label
+                                        id="_IDGenLabel"
+                                        text="Name"
+                                    />
                                     <Input
                                         id="nameInput"
                                         placeholder="{i18n>productNamePlaceholder}"
@@ -65,8 +73,11 @@
                                         liveChange=".simpleValidation"
                                     />
                                 </VBox>
-                                <VBox>
-                                    <Label text="Description" />
+                                <VBox id="_IDGenVBox1">
+                                    <Label
+                                        id="_IDGenLabel1"
+                                        text="Description"
+                                    />
                                     <Input
                                         id="descriptionInput"
                                         placeholder="{i18n>productDescriptionPlaceholder}"
@@ -76,32 +87,48 @@
                                         liveChange=".simpleValidation"
                                     />
                                 </VBox>
-                                <VBox>
-                                    <Label text="Release Date" />
+                                <VBox id="_IDGenVBox2">
+                                    <Label
+                                        id="_IDGenLabel2"
+                                        text="Release Date"
+                                    />
                                     <DatePicker
+                                        id="_IDGenDatePicker"
                                         value="{ReleaseDate}"
                                         editable="{view>/editMode}"
                                     />
                                 </VBox>
-                                <VBox>
-                                    <Label text="Discontinued Date" />
+                                <VBox id="_IDGenVBox3">
+                                    <Label
+                                        id="_IDGenLabel3"
+                                        text="Discontinued Date"
+                                    />
                                     <DatePicker
+                                        id="_IDGenDatePicker1"
                                         value="{DiscontinuedDate}"
                                         editable="{view>/editMode}"
                                     />
                                 </VBox>
-                                <VBox>
-                                    <Label text="Rating" />
+                                <VBox id="_IDGenVBox4">
+                                    <Label
+                                        id="_IDGenLabel4"
+                                        text="Rating"
+                                    />
                                     <StepInput
+                                        id="_IDGenStepInput"
                                         value="{Rating}"
                                         editable="{view>/editMode}"
                                         min="1"
                                         max="5"
                                     />
                                 </VBox>
-                                <VBox>
-                                    <Label text="Price" />
+                                <VBox id="_IDGenVBox5">
+                                    <Label
+                                        id="_IDGenLabel5"
+                                        text="Price"
+                                    />
                                     <Input
+                                        id="_IDGenInput"
                                         value="{Price}"
                                         editable="{view>/editMode}"
                                         type="Number"

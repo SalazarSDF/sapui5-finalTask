@@ -10,54 +10,51 @@
         title="{i18n>title}"
     >
         <content>
-            <VBox
-                fitContainer="true"
-                class="sapUiSmallMargin"
+            <smartFilterBar:SmartFilterBar
+                id="smartFilterBar"
+                entitySet="ODataDemo.Product"
+                persistencyKey="SmartFilterPersistency"
+                basicSearchFieldName="Name"
             >
-                <smartFilterBar:SmartFilterBar
-                    id="smartFilterBar"
-                    entityType="ODataDemo.Product"
-                    persistencyKey="SmartFilterPersistency"
-                    basicSearchFieldName="Name"
-                >
-                    <smartFilterBar:controlConfiguration>
-                        <smartFilterBar:ControlConfiguration
-                            key="Name"
-                            visibleInAdvancedArea="true"
-                        />
-                    </smartFilterBar:controlConfiguration>
-                </smartFilterBar:SmartFilterBar>
-
-                <smartTable:SmartTable
-                    id="smartTable"
-                    smartFilterId="smartFilterBar"
-                    tableType="ResponsiveTable"
-                    editable="false"
-                    entitySet="Products"
-                    useExportToExcel="false"
-                    persistencyKey="SmartTablePersistency"
-                    enableAutoBinding="true"
-                    header="Products"
-                    initiallyVisibleFields="Name,Description,Price,Rating"
-                >
-                    <smartTable:customToolbar>
-                        <Toolbar>
-                            <ToolbarSpacer />
-                            <Button
-                                text="Create"
-                                press=".onCreate"
-                                type="Emphasized"
-                            />
-                        </Toolbar>
-                    </smartTable:customToolbar>
-
-                    <Table
-                        id="innerTable"
-                        selectionChange=".onOpenObject"
-                        mode="SingleSelectMaster"
+                <smartFilterBar:controlConfiguration>
+                    <smartFilterBar:ControlConfiguration
+                        id="_IDGenControlConfiguration1"
+                        key="Name"
+                        visibleInAdvancedArea="true"
                     />
-                </smartTable:SmartTable>
-            </VBox>
+                </smartFilterBar:controlConfiguration>
+            </smartFilterBar:SmartFilterBar>
+
+            <smartTable:SmartTable
+                id="smartTable"
+                smartFilterId="smartFilterBar"
+                tableType="ResponsiveTable"
+                editable="false"
+                entitySet="Products"
+                enableExport="false"
+                persistencyKey="SmartTablePersistency"
+                enableAutoBinding="true"
+                header="Products"
+                initiallyVisibleFields="Name,Description,Price,Rating"
+            >
+                <smartTable:customToolbar>
+                    <Toolbar id="_IDGenToolbar">
+                        <ToolbarSpacer id="_IDGenToolbarSpacer" />
+                        <Button
+                            id="_IDGenButton"
+                            text="Create"
+                            press=".onCreate"
+                            type="Emphasized"
+                        />
+                    </Toolbar>
+                </smartTable:customToolbar>
+
+                <Table
+                    id="innerTable"
+                    selectionChange=".onOpenObject"
+                    mode="SingleSelectMaster"
+                />
+            </smartTable:SmartTable>
         </content>
     </Page>
 </mvc:View>

@@ -1,8 +1,8 @@
-sap.ui.define(["sap/ui/core/mvc/Controller"], (Controller) => {
+sap.ui.define(["sapui5finaltask/controller/BaseController"], (BaseController) => {
   "use strict";
-  return Controller.extend("sapui5finaltask.controller.Master", {
+  return BaseController.extend("sapui5finaltask.controller.Master", {
     onInit() {
-      this._oRouter = this.getOwnerComponent().getRouter();
+      this._oRouter = this.getRouter();
       this._oRouter.getRoute("RouteMaster").attachPatternMatched(this._onMasterMatched, this);
     },
 
