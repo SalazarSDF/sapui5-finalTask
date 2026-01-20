@@ -1,11 +1,11 @@
 {
   "generationParameters": {
-    "generationDate": "Fri Dec 26 2025 06:20:00 GMT-0500 (Eastern Standard Time)",
+    "generationDate": "Tue Jan 13 2026 06:42:26 GMT-0500 (Eastern Standard Time)",
     "generatorPlatform": "CLI",
     "serviceType": "None",
     "metadataFilename": "",
     "serviceUrl": "N/A",
-    "appName": "sapui5-finaltask",
+    "appName": "sapui5finaltask",
     "appTitle": "App Title",
     "appDescription": "An SAP Fiori application.",
     "appNamespace": "",

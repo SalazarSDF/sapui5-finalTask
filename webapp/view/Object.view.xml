@@ -1,0 +1,145 @@
+<mvc:View
+    controllerName="sapui5finaltask.controller.Object"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:uxap="sap.uxap"
+    xmlns:layout="sap.ui.layout"
+    xmlns:form="sap.ui.layout.form"
+    xmlns="sap.m"
+    height="100%"
+>
+    <uxap:ObjectPageLayout id="objectPage">
+        <uxap:headerTitle>
+            <uxap:ObjectPageHeader
+                id="_IDGenObjectPageHeader1"
+                objectTitle="{Name}"
+                objectSubtitle="{Description}"
+            >
+                <uxap:actions>
+                    <Button
+                        id="editButton"
+                        text="Edit"
+                        press=".onEdit"
+                        visible="{= !${view>/editMode} }"
+                        type="Emphasized"
+                    />
+                    <Button
+                        id="deleteButton"
+                        text="Delete"
+                        press=".onDelete"
+                        visible="{= !${view>/editMode} }"
+                        type="Negative"
+                    />
+                    <Button
+                        id="saveButton"
+                        text="Save"
+                        press=".onSave"
+                        visible="{view>/editMode}"
+                        type="Accept"
+                    />
+                    <Button
+                        id="cancelButton"
+                        text="Cancel"
+                        press=".onCancel"
+                        visible="{view>/editMode}"
+                        type="Reject"
+                    />
+                </uxap:actions>
+            </uxap:ObjectPageHeader>
+        </uxap:headerTitle>
+        <uxap:sections>
+            <uxap:ObjectPageSection
+                id="_IDGenObjectPageSection"
+                title="Details"
+            >
+                <uxap:subSections>
+                    <uxap:ObjectPageSubSection id="_IDGenObjectPageSubSection">
+                        <uxap:blocks>
+                            <layout:Grid
+                                id="_IDGenGrid"
+                                defaultSpan="XL4 L4 M6 S12"
+                                class="sapUiSmallMargin"
+                            >
+                                <VBox id="_IDGenVBox">
+                                    <Label
+                                        id="_IDGenLabel"
+                                        text="Name"
+                                    />
+                                    <Input
+                                        id="nameInput"
+                                        placeholder="{i18n>productNamePlaceholder}"
+                                        required="true"
+                                        value="{Name}"
+                                        editable="{view>/editMode}"
+                                        liveChange=".simpleValidation"
+                                    />
+                                </VBox>
+                                <VBox id="_IDGenVBox1">
+                                    <Label
+                                        id="_IDGenLabel1"
+                                        text="Description"
+                                    />
+                                    <Input
+                                        id="descriptionInput"
+                                        placeholder="{i18n>productDescriptionPlaceholder}"
+                                        required="true"
+                                        value="{Description}"
+                                        editable="{view>/editMode}"
+                                        liveChange=".simpleValidation"
+                                    />
+                                </VBox>
+                                <VBox id="_IDGenVBox2">
+                                    <Label
+                                        id="_IDGenLabel2"
+                                        text="Release Date"
+                                    />
+                                    <DatePicker
+                                        id="_IDGenDatePicker"
+                                        value="{ReleaseDate}"
+                                        editable="{view>/editMode}"
+                                    />
+                                </VBox>
+                                <VBox id="_IDGenVBox3">
+                                    <Label
+                                        id="_IDGenLabel3"
+                                        text="Discontinued Date"
+                                    />
+                                    <DatePicker
+                                        id="_IDGenDatePicker1"
+                                        value="{DiscontinuedDate}"
+                                        editable="{view>/editMode}"
+                                    />
+                                </VBox>
+                                <VBox id="_IDGenVBox4">
+                                    <Label
+                                        id="_IDGenLabel4"
+                                        text="Rating"
+                                    />
+                                    <StepInput
+                                        id="_IDGenStepInput"
+                                        value="{Rating}"
+                                        editable="{view>/editMode}"
+                                        min="1"
+                                        max="5"
+                                    />
+                                </VBox>
+                                <VBox id="_IDGenVBox5">
+                                    <Label
+                                        id="_IDGenLabel5"
+                                        text="Price"
+                                    />
+                                    <Input
+                                        id="_IDGenInput"
+                                        value="{Price}"
+                                        editable="{view>/editMode}"
+                                        type="Number"
+                                        placeholder="{i18n>productPricePlaceholder}"
+                                    />
+                                </VBox>
+                            </layout:Grid>
+                        </uxap:blocks>
+                    </uxap:ObjectPageSubSection>
+                </uxap:subSections>
+            </uxap:ObjectPageSection>
+        </uxap:sections>
+    </uxap:ObjectPageLayout>
+</mvc:View>
